@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zk xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns="http://www.zkoss.org/2005/zul">
+    <style src="/Share/css/formstyle.css" />
+    <style>
+        .footer { 
+        position:relative; bottom:0; width:100%; margin:0 auto; 
+        } 
+        .gbChilds { 
+        padding:0px; position:relative; 
+        } 
+        .divLeft .z-groupbox-3d-cnt { 
+        padding:0px !important; 
+        } 
+        .divRight .z-label { 
+        display:none; 
+        }
+        .mgbSearch .z-caption-content {
+        width:100%;
+        }
+        .mgbSearch>.z-groupbox-header {
+        padding:0px !important;
+        }
+        .z-groupbox-3d>.z-groupbox-header .z-caption-content {
+        padding:0px !important;
+        }
+        .mgbSearch .z-button {
+        height:auto !important;
+        }
+        .z-listcell-content div {
+        height:20px;
+        }
+        .deptDes {
+        padding-left:10px;
+        }
+        .deptDes span {
+        font-size:11px; color:lightcoral;
+        }
+        .divContent {
+        height:100%;
+        }
+        .z-listbox-autopaging .z-listcell-content {
+        height: 46px;
+        overflow: hidden;
+        }
+    </style>
+    <window xmlns:h="http://www.zkoss.org/2005/zk/native" xmlns="http://www.zkoss.org/2005/zul" id="windowOutsideOffice" 
+            apply="com.viettel.voffice.dao.system.outsideOffice.OutsideOfficeController">
+        <h:div id="breadcrumbs" class="breadcrumbs breadcrumbs-fixed" style="min-height: 15px !important;"></h:div>
+        
+        <h:div class="main-content-inner background-color-main-detail hunglm16-custom-css">
+            <h:div class="">
+                <h:div class="panel-content-inner">
+                    <h:div class="content-inner">
+                        <h:div class="widget-box">
+                            <h:div class="widget-header">
+                                <zk if="${$composer.getMenuType()!= 2}">
+                                    <h:h5 class="widget-title hunglm16-font-13px-bold">${labels.outsideoffice.list}</h:h5>
+                                </zk>
+                                <zk if="${$composer.getMenuType()==2}">
+                                    <h:h5 class="widget-title hunglm16-font-13px-bold">${labels.outsideoffice.identify.list}</h:h5>
+                                </zk>
+                                <h:div class="widget-toolbar">												
+                                    <h:a class="orange2" data-action="fullscreen" href="#">
+                                        <h:i class="ace-icon fa fa-expand"></h:i>
+                                    </h:a>												
+                                    <h:a style="cursor: pointer;" onClick="collapseHunglm16(this);" hidegroupHunglm16="widget-body-hunglm16-01">
+                                        <h:i class="ace-icon fa fa-chevron-up"></h:i>
+                                    </h:a>		
+                                </h:div>
+                            </h:div>
+							
+                            <h:div class="widget-body">
+                                <h:div class="widget-main widget-body-hunglm16-01">
+                                    <h:div role="form" class="form-horizontal">
+<!--                                        <h:div class="form-group" style='${$composer.getMenuType()==2?"display:none":""}'>
+                                            <h:label class="col-md-3 control-label no-padding-right">${labels.outsideoffice.deptName}</h:label>
+                                            <h:div class="col-md-6">
+                                                <textbox id="tbSearchOfficeName" class="form-control" maxlength="200" />
+                                            </h:div>
+                                            <h:div class="col-md-1"></h:div>													
+                                        </h:div>-->
+                                        <h:div class="form-group">
+                                            <h:label class="col-md-3 control-label no-padding-right">Tên WorkingTemp</h:label>
+                                            <h:div class="col-md-6">
+                                                <textbox id="tbSearchOfficeName" class="form-control" maxlength="200" />
+                                            </h:div>
+                                            <h:div class="col-md-1"></h:div>													
+                                        </h:div>
+<!--                                        <h:div class="form-group" style='${$composer.getMenuType()==2?"":"display:none"}'>
+                                            <h:label class="col-md-1 control-label no-padding-right">${labels.outsideoffice.identifyLock}</h:label>
+                                            <h:div class="col-md-1">
+                                                <checkbox id="cbSearchOfficeLock" label="" checked="true" />
+                                            </h:div>
+                                            <h:label class="col-md-1 control-label no-padding-right">${labels.outsideoffice.deptName}</h:label>
+                                            <h:div class="col-md-3">
+                                                <textbox id="tbSearchOfficeName1" class="form-control" maxlength="200" />
+                                            </h:div>
+                                            <h:label class="col-md-1 control-label no-padding-right">${labels.outsideoffice.identifyCode}</h:label>
+                                            <h:div class="col-md-3">
+                                                <textbox id="tbSearchIdentifyCode" class="form-control" maxlength="50" />
+                                            </h:div>													
+                                            <h:div class="col-md-1"></h:div>
+                                        </h:div> -->
+                                        <h:div class="form-group mt15">
+                                            <h:div class="col-md-5"></h:div>
+                                            <h:div class="col-md-4">
+                                                <h:div class="btn-group">
+                                                    <button id="btnSearch" label=" ${labels.btn.search}" sclass="btn btn-primary bigger-110" />
+                                                    <!--<button id="btnNew" label="${labels.crud.create}" sclass="btn btn-primary bigger-110" />-->    
+                                                    <button id="btnNewWorkTemp" label="OpenCreateWork" sclass="btn btn-primary bigger-110" />                                                
+                                                    <button id="btnManageOutsideGroup" visible="${$composer.getMenuType() == 2}" label="${labels.groupConfig.manageOutsideGroup}" sclass="btn btn-primary bigger-110" />  
+                                                    <button id="btnWorktemp" label="Worktemp" sclass="btn btn-primary bigger-110"></button>                                                  
+                                                </h:div>
+                                            </h:div>
+                                            <h:div class="col-md-3"></h:div>
+                                        </h:div>
+                                    </h:div>
+                                    
+                                    <div id="div1">
+                                       
+                                            <paging id="officePagingTop" pageSize="15" detailed="true" />
+                                            <vlayout>
+                                                <listbox id="lbListOffice" mold="paging" emptyMessage="${labels.record.not_exist}" checkmark="true" style="border:none">
+                                                    <listhead>
+                                                        <listheader hflex="min" />
+                                                        <listheader label="${labels.outsideoffice.deptName}" hflex="2" />
+                                                        <listheader label="${labels.outsideoffice.deptCode}" hflex="2" />
+                                                        <zk if="${$composer.getMenuType()==2}">
+                                                            <listheader label="${labels.outsideoffice.identifyCode}" hflex="1" />
+                                                        </zk>                                                    
+                                                        <listheader label="${labels.common.address}" hflex="2" />
+                                                        <listheader label="${labels.common.email}" hflex="1" />
+                                                        <listheader label="${labels.common.phone}" hflex="min" />
+                                                        <listheader label="${labels.bean.attribute.status}" hflex="min" />
+                                                        <listheader align="center" label="${labels.crud.read}"
+                                                                    hflex="min" />
+                                                        <listheader align="center" label="${labels.crud.update}"
+                                                                    hflex="min" />
+                                                        
+                                                    </listhead>
+                                                    <template name="model">
+                                                        <listitem>
+                                                            <listcell />
+                                                            <listcell label="${each.officeName}"
+                                                                      tooltiptext="${each.officeName}" />
+                                                        
+                                                            <listcell label="${each.officeCode}"
+                                                                      tooltiptext="${each.officeCode}" />
+                                                        
+                                                            <zk if="${$composer.getMenuType()==2}">
+                                                                <listcell label="${each.identifyCode}"
+                                                                          tooltiptext="${each.identifyCode}" />
+                                                            </zk>                                                        
+                                                            <listcell label="${each.address}"
+                                                                      tooltiptext="${each.address}" />
+                                                            <listcell label="${each.email}"
+                                                                      tooltiptext="${each.email}" />
+                                                            <listcell label="${each.mobile}"
+                                                                      tooltiptext="${each.mobile}" />
+                                                            <listcell>
+                                                                <zk if="${each.status == 1}">
+                                                                    <label value="${labels.action.name.unlock}" />
+                                                                </zk>
+                                                                <zk if="${each.status != 1}">
+                                                                    <label value="${labels.action.name.lock}" />
+                                                                </zk>
+                                                            </listcell>
+                                                            <listcell>
+                                                                <image src="/Share/img/icon/view.png"
+                                                                       width="20px" height="20px"
+                                                                       forward="onClick=lbListOffice.onOpenView(${each})"
+                                                                       tooltiptext="${labels.outsideoffice.deptDetail}" />
+                                                            </listcell>
+                                                            <listcell>
+                                                                <image src="/Share/img/icon/edit.png"
+                                                                       width="20px" height="20px"
+                                                                       forward="onClick=lbListOffice.onOpenUpdate(${each})"
+                                                                       tooltiptext="${labels.outsideoffice.deptEdit}" />
+                                                            </listcell>
+                                                             
+                                                        </listitem>
+                                                    </template>
+                                                </listbox>
+                                            
+                                            
+                                            
+                                            </vlayout>
+                                            <h:div class="tableTools-container" style="padding-left: 0px ! important;">
+                                                <include id="toolbarOffice" src="/Pages/common/toolbarApplication.zul" />
+                                            </h:div>
+                                        
+                                    </div>
+                                    <div id="div2">
+                                            <paging id="officePagingTop1" pageSize="15" detailed="true" />
+                                            <vlayout>
+                                                <listbox id="lbListWorkTemp" mold="paging" emptyMessage="${labels.record.not_exist}" checkmark="true" style="border:none">
+                                                    <listhead>
+                                                        <listheader label="Work_name" />
+                                                        <listheader label="Start_time" />
+                                                        <listheader label="End_time"/>
+                                                        <listheader label="Status"/>
+                                                        <listheader label="Comment"/>
+                                                        <listheader label="Creat_date"/>
+                                                        <listheader align="center" label="${labels.crud.read}"
+                                                                    hflex="min" />
+                                                        <listheader align="center" label="${labels.crud.update}"
+                                                                    hflex="min" />
+                                                        <listheader align="center" label="Xóa"
+                                                                    hflex="min" />
+                                                    </listhead>
+                                                    <template name="model">
+                                                        <listitem>
+                                                            <listcell label="${each.workName}"></listcell>
+                                                            <listcell label="${each.startTime}"></listcell>
+                                                            <listcell label="${each.endTime}"></listcell>
+                                                            <listcell label="${each.status}"></listcell>
+                                                            <listcell label="${each.comments}"></listcell>
+                                                            <listcell label="${each.createTime}"></listcell>
+                                                            <listcell>
+                                                                <image src="/Share/img/icon/view.png"
+                                                                       width="20px" height="20px"
+                                                                       forward="onClick=lbListWorkTemp.onOpenViewWork(${each})"
+                                                                       tooltiptext="View Detail WorkingTemp" />
+                                                            </listcell>
+                                                            <listcell>
+                                                                <image src="/Share/img/icon/edit.png"
+                                                                       width="20px" height="20px"
+                                                                       forward="onClick=lbListWorkTemp.onOpenUpdateWork(${each})"
+                                                                       tooltiptext="${labels.outsideoffice.deptEdit}" />
+                                                            </listcell>
+                                                            <listcell>
+                                                                <image src="/Share/img/icon/delete.png"
+                                                                       width="20px" height="20px"
+                                                                       forward="onClick=lbListWorkTemp.onOpenDelete(${each})"
+                                                                       tooltiptext="${labels.common.tooltiptext.delete}" />
+                                                            </listcell>
+                                                        </listitem>
+                                                    </template>
+                                                </listbox>
+                                            
+                                            
+                                            
+                                            </vlayout>
+                                            <h:div class="tableTools-container" style="padding-left: 0px ! important;">
+                                                <include id="toolbarOffices" src="/Pages/common/toolbarApplication.zul" />
+                                            </h:div>
+                                        
+                                    </div>
+                             
+                                </h:div>
+                            </h:div>
+                        </h:div>
+                    </h:div>
+                </h:div>
+            </h:div>
+        </h:div>
+    </window>
+</zk>

@@ -14,3 +14,7 @@ worktempcontrollers in package
 
 worktempdaohe in package
 - com.viettel.demo.worktempdaohe
+
+File index.zul in Pages\admin\outsideOffice\index.zul
+
+File OutsideOfficeController in com.viettel.voffice.dao.system.outsideOffice
