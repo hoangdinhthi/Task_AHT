@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window xmlns:h="http://www.zkoss.org/2005/zk/native"
+        xmlns="http://www.zkoss.org/2005/zul" position="center,center"
+        closable="true" width="50%" mode="overlapped"
+        border="normal" id="windowCRUDWorktemp"
+        apply="com.viettel.demo.worktempcontrollers.WorktempCRUDController">
+    <zscript>
+        <![CDATA[
+		   String rexOfficeCode = "/^\\S+$/: Mã đơn vị không được để trống, không có dấu cách";
+		   String rexEmail = "/(.+@.+\\.[a-z]+)|(^$)/: Nhập chính xác địa chỉ email";
+		   String rexTel = "/(\\d{10,11})|(^$)/: Nhập chính xác số điện thoại";
+		]]>
+    </zscript>
+    <h:div class="body-dialog clearfix">
+        <h:div class="form-horizontal">
+<!--            <h:div class="form-group" style='${$composer.getMenuType()==2?"display:none":""}'>
+                <h:label class="col-md-3 control-label no-padding-right">${labels.outsideoffice.deptOwner}</h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbDeptName" disabled="true" style="height:30px;" sclass="form-control" value="${$composer.outsideOffice.deptName}" hflex="1" />
+                </h:div>
+            </h:div>-->
+            
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">UserID<h:codex>*</h:codex></h:label>
+                <h:div class="col-md-8">
+                    <textbox focus="true" id="tbUserID" maxlength="500" sclass="form-control" value="${arg.workingTemp == null ? '' : arg.workingTemp.userId}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">RoleID<h:codex>*</h:codex></h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbRoleID" maxlength="500" sclass="form-control" value="${arg.workingTemp == null ? '' : arg.workingTemp.roleId}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">DeptID<h:codex>*</h:codex></h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbDeptID" maxlength="500" sclass="form-control"  value="${arg.workingTemp == null ? '' : arg.workingTemp.deptId}"/>
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">WorkName</h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbWorkName" maxlength="500" sclass="form-control"  value="${arg.workingTemp == null ? '' : arg.workingTemp.workName}"/>
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">StartTime</h:label>
+                <h:div class="col-md-8">
+                     <datebox id="dbStartime" style="width:100%;"  format="dd/MM/yyyy"  />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">EndTime</h:label>
+                <h:div class="col-md-8">
+<!--                     <datebox id="dbEndTime" style="width:100%;" value="@{controller.holidaySelected.holidayDate, access='both', save-when='none'}" format="dd/MM/yyyy" onCreate="self.value = new Date()" />-->
+                     <datebox id="dbEndTime" style="width:100%;" format="dd/MM/yyyy"  />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">Status</h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbStatus" maxlength="500" sclass="form-control"  value="${arg.workingTemp == null ? '' : arg.workingTemp.status}"/>
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">Comments</h:label>
+                <h:div class="col-md-8">
+                    <textbox id="tbComment" maxlength="500" sclass="form-control" value="${arg.workingTemp == null ? '' : arg.workingTemp.comments}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">CreateDate</h:label>
+                <h:div class="col-md-8">
+                     <datebox id="dbCreateDate" style="width:100%;" format="dd/MM/yyyy"/>
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right"></h:label>
+                <h:div class="col-md-8">
+                    <label id="lbNameWarning" class="notify" visible="false" width="100%" />
+                    <label id="lbCodeWarning" class="notify" visible="false" width="100%" />
+                    <label id="lbEmailWarning" class="notify" visible="false" width="100%" />
+                </h:div>
+            </h:div>
+        </h:div>
+    </h:div>
+    <h:div class="modal-footer">
+        <button label="${labels.crud.save}" id="btnSave" sclass="back btn btn-primary" />
+        <button label="${labels.crud.close}" id="btnCancel" onClick="windowCRUDWorktemp.detach()" sclass="back btn btn-primary" />
+    </h:div>
+</window>

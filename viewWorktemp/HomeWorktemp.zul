@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul">
+    <window title="Search" width="800px" border="normal"
+            apply="com.viettel.demo.worktempcontrollers.WorktempController">
+        <hbox align="center">
+		Keyword:
+		<textbox id="keywordBox" />
+		<button id="searchButton" label="Search"/>
+	</hbox>
+	<listbox id="worktempListbox" rows="3" emptyMessage="No worktemp found in the result">
+		<listhead>
+			<listheader label="Work_name" />
+			<listheader label="Start_time" />
+			<listheader label="End_time"/>
+                        <listheader label="Status"/>
+                        <listheader label="Comment"/>
+                        <listheader label="Creat_date"/>
+		</listhead>
+		<template name="model">
+			<listitem>
+				<listcell label="${each.workName}"></listcell>
+				<listcell label="${each.startTime}"></listcell>
+				<listcell label="${each.endTime}"></listcell>
+                                <listcell label="${each.status}"></listcell>
+                                <listcell label="${each.comments}"></listcell>
+                                <listcell label="${each.createTime}"></listcell>
+			</listitem>
+		</template>
+	</listbox>
+    </window>
+</zk>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window xmlns:h="http://www.zkoss.org/2005/zk/native" xmlns="http://www.zkoss.org/2005/zul" 
+        xmlns:zk="http://www.zkoss.org/2005/zk"
+        position="center,center"
+        closable="true" width="50%" border="normal" id="windowCRUDWorkingTemp" 
+        title="Thông tin cơ quan"
+        onCancel="windowCRUDWorkingTemp.detach()">
+    <style>
+        .control-label
+        {
+        cursor: default;
+        }
+    </style>
+    <h:div class="body-dialog clearfix">
+        <h:div class="form-horizontal">
+            <h:div class="form-group" style='${arg.menuType==2?"display:none":""}'>
+                <h:label class="col-md-3 control-label no-padding-right">WorkName</h:label>
+                <h:div class="col-md-8">
+                   <label sclass="label-info" value="${arg.workingTemp.workName}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">Comment</h:label>
+                <h:div class="col-md-8">
+                    <label sclass="label-info" value="${arg.workingTemp.comments}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">StartTime</h:label>
+                <h:div class="col-md-8">
+                    <label sclass="label-info" value="${arg.workingTemp.startTime}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">EndTime</h:label>
+                <h:div class="col-md-8">
+                    <label sclass="label-info" value="${arg.workingTemp.endTime}" />
+                </h:div>
+            </h:div>
+            
+<!--            <zk if="${arg.menuType==2}">
+                <h:div class="form-group">
+                    <h:label class="col-md-3 control-label no-padding-right">${labels.outsideoffice.identifyCode}</h:label>
+                    <h:div class="col-md-8">
+                        <label sclass="label-info" value="${arg.outsideOffice.identifyCode}" />
+                    </h:div>
+                </h:div>
+            </zk>-->
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">STT</h:label>
+                <h:div class="col-md-8">
+                    <label sclass="label-info" value="${arg.workingTemp.status}" />
+                </h:div>
+            </h:div>
+            <h:div class="form-group">
+                <h:label class="col-md-3 control-label no-padding-right">CreateTime</h:label>
+                <h:div class="col-md-8">
+                    <label sclass="label-info" value="${arg.workingTemp.createTime}" />
+                </h:div>
+            </h:div>
+        </h:div>
+    </h:div>
+    <div class="modal-footer">
+        <button id="btnClose" label="Đóng" onClick="windowCRUDWorkingTemp.onClose()" sclass="back btn btn-primary" iconSclass="fa fa-close"/>
+    </div>
+</window>
